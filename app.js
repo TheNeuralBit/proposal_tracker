@@ -31,7 +31,7 @@
     factory.proposal_data.list = [];
     factory.proposal_data.displayed_list = [];
 
-    $http.get('../proposals.json').success(function(data) {
+    $http.get('./proposals.json').success(function(data) {
       factory.proposal_data.list = data;
       factory.proposal_data.displayed_list = [].concat(factory.proposal_data.list);
       console.debug(factory.proposal_data.list);
