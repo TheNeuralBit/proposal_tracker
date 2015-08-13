@@ -1,0 +1,4 @@
+<select st-search="{{predicate}}">
+    <option ng-if="allowAll" value="">All</option>
+    <option ng-repeat="row in rowData | unique: predicate" value="{{row[predicate]}}">{{row[predicate]}}</option>
+</select>

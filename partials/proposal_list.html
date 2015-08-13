@@ -1,0 +1,48 @@
+<table st-table="proposal_data.displayed_list" st-safe-src="proposal_data.list" st-set-filter="customFilter" class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th st-sort="gfy">GFY</th>
+      <th st-sort="type">Type</th>
+      <th st-sort="current_project">Current Project</th>
+      <th st-sort="rfp_title">RFP Title</th>
+      <th st-sort="customer">Customer</th>
+      <th st-sort="secondary_customer">Secondary Customer</th>
+      <th st-sort="proposed_amount">Proposed Amount</th>
+    </tr>
+    <tr>
+      <th colspan="7"><input st-search placeholder="global search" class="input-sm form-control" type="search"></input></th>
+    </tr>
+
+    <!-- Attribute Specific Filters -->
+    <tr>
+      <th></th> <!-- GFY -->
+      <th>      <!-- Type -->
+        <!-- TODO: Make this a plugin -->
+        <stf-dropdown predicate="type" row-data="proposal_data.list" allow-all="true"></stf-dropdown>
+      </th>
+      <th></th> <!-- Current Project -->
+      <th></th> <!-- RFP Title -->
+      <th></th> <!-- Customer -->
+      <th></th> <!-- Secondary Customer -->
+        <!-- TODO: Make a number filter -->
+      <th> <!-- Proposed Amount -->
+        <div class="input-group">
+        <input st-bound="proposed_amount" placeholder="<" class="form-control" style="text-align: right" direction="higher" type="search"></input>
+        <span class="input-group-addon"> $ </span>
+        <input st-bound="proposed_amount" placeholder="<" class="form-control" direction="lower" type="search"></input>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="proposal in proposal_data.displayed_list">
+      <td>{{ proposal.gfy }}</td>
+      <td>{{ proposal.type }}</td>
+      <td>{{ proposal.current_project }}
+      <td>{{ proposal.rfp_title }}</td>
+      <td>{{ proposal.customer }}</td>
+      <td>{{ proposal.secondary_customer }}</td>
+      <td class="money">{{ proposal.proposed_amount | currency }}</td>
+    </tr>
+  </tbody>
+</table>
